@@ -2,8 +2,8 @@ import { UPDATE_EXTENSION } from '@things-factory/export-base'
 import { store } from '@things-factory/shell'
 import { Parser } from 'json2csv'
 
-function jsonToCsv({ extension, data, name }) {
-  const records = typeof data == 'function' ? data.call() : data
+async function jsonToCsv({ extension, data, name }) {
+  const records = typeof data == 'function' ? await data.call() : data
 
   const fields = Object.keys(records[0])
   const parser = new Parser({ fields })
